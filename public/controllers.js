@@ -55,12 +55,15 @@ angular.module('crossfitApp').controller('GymShowCtrl',function($scope, $statePa
       $scope.gym = data;
       });
 //creates new review
+      // $scope.reviews = Review.query();
+      $scope.review = {};
+      $scope.reviews = [];
       $scope.createReview = function() {
-        var newReview = $scope.review;
-        console.log(newReview);
-        Review.save(newReview, function (data) {
+        debugger;
+        Review.save($scope.review, function (data) {
         console.log(data);
-        $scope.reviews.push(data);
+        
+        $scope.reviews.unshift(data);
 
         });
         $scope.review = {};
