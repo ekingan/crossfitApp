@@ -1,1 +1,12 @@
 /*PUT YOUR STYLES HERE*/
+.media-object {
+	width: 100px;
+	height: 150px;
+}
+
+#show {
+	width: 200px;
+	height: 300px;
+
+}
+

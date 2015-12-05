@@ -1,0 +1,66 @@
+<div class="container" ng-controller="GymShowCtrl">
+	<div class="media-left">
+      <!-- book info -->
+      <div class="media-body">
+        <h3 class="media-heading">
+          {{gym.name}}
+        </h3>
+        <h4>
+          {{gym.website}}
+        </h4>
+        <!-- <div ng-controller="GymIndexCtrl">
+          <form class='form-group' ng-show="gym.editForm" ng-submit="editGym(gym)">
+	          <input  class='form-control' type="text" ng-model="gym.name" placeholder="name">
+	          <input  class='form-control' type="text" ng-model="gym.website" placeholder="website">
+	          <button type="submit" class='btn btn-primary pull-right'>Update</button>
+	        </form>
+	      </div> -->
+      </div>
+   </div>
+    <!-- new review form -->
+      <div class="row" >
+        <h3>Add a Review</h3>
+      <form class='form-group' ng-submit="createReview()">
+           <textarea class="form-control" rows="3" ng-model="review.content" required></textarea>
+          <strong> Best thing about this box: </strong><br>
+          <label>
+          <input type="checkbox" ng-model="review.programming">
+          Programming
+          </label>
+          <label> 
+          <input type="checkbox" ng-model="review.community">
+          Community
+          </label>
+          <label> 
+          <input type="checkbox" ng-model="review.vibe">
+          Vibe
+          </label>
+          <label> 
+          <input type="checkbox" ng-model="review.schedule">
+          Schedule
+          </label>
+          <label> 
+          <input type="checkbox" ng-model="review.price">
+          Price
+          </label>
+          <br>
+          <button type="submit" class='btn btn-primary pull-right'>Save</button>
+      </form>
+      <br>
+      </div>
+      <!-- review show -->
+        <div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <ul class='list-unstyled'>
+                <li class="list-unstyled" ng-repeat="review in reviews">
+                  <h4 class="panel-title form-inline">
+                  {{review.content}}
+                  </h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+    
+</div>

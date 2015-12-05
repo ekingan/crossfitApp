@@ -10,6 +10,7 @@ var app = express();
 var path = require('path');   // built-in module for dealing with file paths
 var bodyParser = require('body-parser');  // parse form data into req.body
 var mongoose = require('mongoose');   // object document mapper
+var request = require('request');
 
 // configure bodyparser
 app.use(bodyParser.urlencoded({
@@ -18,7 +19,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // connect to database
-var dbName = 'seed-mean-html';
+var dbName = 'db';
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/' + dbName);    
 
 // serve public folder as static assets on the root route
@@ -51,14 +52,14 @@ app.get('/templates/:name', routes.templates);
 
 // API ROUTES
 // post routes
-app.use('/api/posts', routes.postRouter);
+app.use('/api/gyms', routes.gymRouter);
 
 
 // ALL OTHER ROUTES (ANGULAR HANDLES)
 // redirect all other paths to index
 app.get('*',  routes.index);
 
-
+console.log("nodemon update sanity check")
 // SERVER
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var port = process.env.PORT || 1337;

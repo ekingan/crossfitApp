@@ -4,35 +4,90 @@
 
 'use strict';
 
-angular.module('myApp.controllers', [])
-  .controller('MainCtrl', ['$rootScope', '$scope', '$location', function ($rootScope, $scope, $location) {
-    // INITIALIZATION AND NAVBAR LOGIC
-  }])
+angular.module('crossfitApp').controller('GymIndexCtrl',function($scope, Gym, $stateParams) {
+    
 
-  //POSTS
-  .controller('PostsIndexCtrl', ['$scope', '$location', '$http', function ($scope, $location, $http) {
-    // GET POSTS
-    // make a GET request for all posts with $http
+    // get() returns a single book
+    
 
-    // NEW POST
-    // create an empty 'post' object within the scope
+    //query() returns all the gyms
+    $scope.allGyms = Gym.query(function(data) {
+    }); 
 
 
-    // CREATE A POST    
-    $scope.createPost = function() {
-      // make a POST request to create the post with $http
-      // sned the scope's post object as data
+    $scope.editGym = function(gym) {
+      Gym.update({id: gym._id}, gym, function(data) {
+        gym.editForm = false;
+        
+      });
+    };
 
-      // reset scope's post object
-      
+    // // delete a gym
+    $scope.deleteGym = function (gym, $index) {
+      Gym.delete({id: gym._id}, gym, function (data) {
+      $scope.gym = gym;
+      $scope.allGyms.splice($index, 1);
+      });
     };
 
 
-    // DELETE A POST
-    $scope.deletePost = function(post) {
-      // make a DELETE request for this post
+});
+angular.module('crossfitApp').controller('GymNewCtrl',function($scope, Gym, $stateParams) {
 
+    // add a new gym
+    $scope.newGym = {};
+    $scope.allGyms = [];
+
+    $scope.createGym = function() {
+      if ($scope.newGym) {
+        Gym.save($scope.newGym, function (data) {
+        $scope.allGyms.push(data);
+        });
+        $scope.newGym = {};
+      }
     };
+  });
+
+angular.module('crossfitApp').controller('GymShowCtrl',function($scope, $stateParams,
+                                                                Review, Gym ) {
+//gets gyms by ID for Show page
+      Gym.get({ id: $stateParams.gym_id }, function(data) {
+      $scope.gym = data;
+      });
+//creates new review
+      $scope.createReview = function() {
+        var newReview = $scope.review;
+        console.log(newReview);
+        Review.save(newReview, function (data) {
+        console.log(data);
+        $scope.reviews.push(data);
+
+        });
+        $scope.review = {};
+      };
+
+        // var review = new Review($scope.review);
+        // console.log(review);
+        // review.$save(function (data) {
+        //   $scope.reviews.unshift(data);
+        
+        //   console.log($scope.reviews);
+        //   $scope.review = {};
+      //   });
+      // };
 
 
-  }]);
+
+
+
+});
+
+// angular.module('crossfitApp').controller('GymSearchCtrl',function($scope) {
+//       $scope.searchGym = function () {
+//         console.log($scope.term)
+//         Post($window.lovation.origin + '/api/gym/search')
+//         .success(function (res) {
+
+//         })
+//       }
+//   });

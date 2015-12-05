@@ -1,0 +1,39 @@
+<div class="container" ng-controller="GymIndexCtrl">
+  <div class="row">
+		<div class="col-md-8 col-md-offset-3">
+			<ul class='list-unstyled' ng-repeat="gym in allGyms">
+				<li class='list-unstyled'>
+					<h4><a ui-sref="gym-show({gym_id: gym._id})">{{gym.name}}</a></h4>
+					<h5>{{gym.website}}</h5></hr>
+					 <a href="#" class='pull-right' ng-click="gym.editForm = true">
+			      <i class='icon ion-edit'></i>
+			      </a>
+			      <a href="#" class='pull-right' ng-click="deleteGym(gym, $index)">
+			        <i class='icon ion-close-circled'></i>
+			      </a>
+			      <div>
+			        <form class='form-group' ng-show="gym.editForm" ng-submit="editGym(gym)">
+			          <input  class='form-control' type="text" ng-model="gym.name" placeholder="name">
+			          <input  class='form-control' type="text" ng-model="gym.website" placeholder="website">
+			          <button type="submit" class='btn btn-primary pull-right'>Update</button>
+			        </form>
+			        <br>
+			      </div>
+					<hr>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</div>
+<!-- <div class="" ng-controller="GymSearchCtrl">
+	<h4>Affiliate Search</h4>
+		<form ng-submit="searchGym()">
+			
+			
+		</form>
+  
+
+  
+</div>
+ -->

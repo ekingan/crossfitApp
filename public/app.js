@@ -4,15 +4,26 @@
 
 'use strict';
 
-angular.module('myApp', ['ui.router',
-                         'myApp.controllers'])
+angular.module('crossfitApp', ['ui.router',
+                               'ngResource'])
 
-  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
+ .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
-      .state('posts', {
+      .state('html5Mode', {
         url: "/",
-        templateUrl: 'templates/posts-index',
-        controller: 'PostsIndexCtrl'
+        templateUrl: 'templates/gyms-index.html',
+        controller: 'GymIndexCtrl'
+      })
+      .state('gym-show', {
+        url: "/gyms/:gym_id", 
+        templateUrl: 'templates/gym-show.html',
+        controller: 'GymShowCtrl'
+      })
+      .state('gym-new', {
+        url: "/gyms/gym-new", 
+        templateUrl: 'templates/gym-new.html',
+        controller: "GymNewCtrl"
+
       });
 
     $urlRouterProvider.otherwise("/state1");

@@ -1,0 +1,25 @@
+<div class="container" ng-controller="GymNewCtrl">
+	<div class="col-md-8 col-md-offset 3">
+			<!-- new gym form -->
+			<div class="row">
+			<div>
+			  <h3>Add an Affliate</h3>
+			<form class='form-group' ng-submit="createGym()">
+			    <label for="">Name</label>
+			    <input  class='form-control'type="text" ng-model="newGym.name" required>
+			    <label for="">Website</label>
+			    <input  class='form-control'type="text" ng-model="newGym.website">
+			    <br>
+			    <button type="submit" class='btn btn-primary pull-right'>Save</button>
+			</form>
+			<br>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-10 col-md-offset-1" ng-repeat="newGym in allGyms">
+			<p>{{newGym.name}}</p>
+			<p>{{newGym.website}}</p>
+		</div>
+	</div>
+</div>
