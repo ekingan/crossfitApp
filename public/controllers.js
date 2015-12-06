@@ -62,13 +62,19 @@ angular.module('crossfitApp').controller('ReviewShowCtrl',function($scope, $stat
       //gets all reviews
       $scope.reviews = Review.query();
        //creates new review
+       //review is an object
       $scope.review = {};
+      //reviews is an array of review objects
       $scope.reviews = [];
+      //when submited a review is created
       $scope.createReview = function() {
+        //review is saved
         Review.save($scope.review, function (data) {
         console.log(data);
+        //vrevie is shifted into the array of reviews
         $scope.reviews.unshift(data);
         });
+        //form is cleared out.
         $scope.review = {};
       };
 
