@@ -3,7 +3,8 @@
  */
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    Review = require('./Review');
 
 var GymSchema = new Schema({
     created_at: { 
@@ -20,7 +21,7 @@ var GymSchema = new Schema({
       type: String,
       required: false
     },
-    reviews: [ReviewSchema]
+    reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }]
     
 });
 

@@ -1,7 +1,26 @@
 var express = require('express');
-var gymRouter = express.Router();
+var reviewRouter = express.Router();
 
-var Gym = require('../models/gym.js');
+var Review = require('../models/review.js');
 
-gymRouter.route('/')  // translates to '/api/posts/'
+reviewRouter.route('/')  // translates to '/api/reviews	
 //INDEX -GET ALL POSTS
+
+    //post new review
+    // .post(function (req, res) {
+    //   Gym.findById(req.params.gym_id, function (err, review) {
+    //     if (err) console.log(err);
+    //     res.status(201).send(gym.review);
+    //   });
+    // })
+    // //delete review
+    // .delete(function (req, res) {
+    //   Gym.findById(req.paramas.gym_id, function (err, review) {
+    //     if (err) console.log(err);
+    //     gym.review.id(req.params.id).remove();
+    //     gym.save(function (err) {
+    //       if (err) { console.log(err)};
+    //       res.json(gym);
+    //     });
+    //   });
+    // });

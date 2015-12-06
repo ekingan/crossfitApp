@@ -47,24 +47,25 @@ angular.module('crossfitApp').controller('GymNewCtrl',function($scope, Gym, $sta
       }
     };
   });
-
 angular.module('crossfitApp').controller('GymShowCtrl',function($scope, $stateParams,
                                                                 Review, Gym ) {
 //gets gyms by ID for Show page
       Gym.get({ id: $stateParams.gym_id }, function(data) {
       $scope.gym = data;
+
       });
+  });
+
+angular.module('crossfitApp').controller('ReviewShowCtrl',function($scope, $stateParams,
+                                                                Review, Gym ) {
 //creates new review
       // $scope.reviews = Review.query();
       $scope.review = {};
       $scope.reviews = [];
       $scope.createReview = function() {
-        debugger;
         Review.save($scope.review, function (data) {
         console.log(data);
-        
         $scope.reviews.unshift(data);
-
         });
         $scope.review = {};
       };

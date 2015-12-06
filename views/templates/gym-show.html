@@ -1,7 +1,7 @@
-<div class="container" ng-controller="GymShowCtrl">
+<div class="container">
 	<div class="media-left">
       <!-- book info -->
-      <div class="media-body">
+      <div class="media-body" ng-controller="GymShowCtrl">
         <h3 class="media-heading">
           {{gym.name}}
         </h3>
@@ -18,7 +18,7 @@
       </div>
    </div>
     <!-- new review form -->
-      <div class="row" >
+      <div class="row" ng-controller="ReviewShowCtrl">
         <h3>Add a Review</h3>
       <form class='form-group' ng-submit="createReview()">
            <textarea class="form-control" rows="3" ng-model="review.content" required></textarea>
@@ -50,12 +50,12 @@
       </div>
       <!-- review show -->
         <div>
-          <div class="panel panel-default">
+          <div class="panel panel-default" >
             <div class="panel-heading">
               <ul class='list-unstyled'>
                 <li class="list-unstyled" ng-repeat="review in reviews">
                   <h4 class="panel-title form-inline">
-                  {{review.content}}
+                  {{gym.reviews}}
                   </h4>
                 </li>
               </ul>

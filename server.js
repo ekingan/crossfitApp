@@ -51,15 +51,16 @@ app.get('/templates/:name', routes.templates);
 // });
 
 // API ROUTES
-// post routes
+// gym routes
 app.use('/api/gyms', routes.gymRouter);
-
+// review routes
+app.use('/api/reviews', routes.reviewRouter);
 
 // ALL OTHER ROUTES (ANGULAR HANDLES)
 // redirect all other paths to index
 app.get('*',  routes.index);
 
-console.log("nodemon update sanity check")
+console.log("nodemon update sanity check");
 // SERVER
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var port = process.env.PORT || 1337;

@@ -17,9 +17,7 @@ gymRouter.route('/')  // translates to '/api/gyms/'
   // create new gym
   .post(function (req,res){  
     console.log("the post newGym",req.body);
-    Gym.create({req.body}, function (err, gym){
-      if (err) { 
-        return res.send(err); }
+    Gym.create(req.body, function (err, gym){
       console.log(gym);
       res.status(201).send(gym);
     });
@@ -49,26 +47,10 @@ gymRouter.route('/:gym_id')   // translates to '/api/gym/:gym_id'
       if (err) { return res.send(err); }
       res.status(200).send('Success');
     });
-  })
+  }); 
 //REVIEW ROUTES
-    //post new review
-    .post(function (req, res) {
-      Gym.findById(req.params.gym_id, function (err, review) {
-        if (err) console.log(err);
-        res.status(201).send(gym.review);
-      });
-    })
-    //delete review
-    .delete(function (req, res) {
-      Gym.findById(req.paramas.gym_id, function (err, review) {
-        if (err) console.log(err);
-        gym.review.id(req.params.id).remove();
-        gym.save(function (err) {
-          if (err) { console.log(err)};
-          res.json(gym);
-        });
-      });
-    });
+//move into review.js file
+
 
 
     
