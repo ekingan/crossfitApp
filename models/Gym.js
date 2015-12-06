@@ -21,6 +21,7 @@ var GymSchema = new Schema({
       type: String,
       required: false
     },
+    // reviews: ['Review']
     reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }]
     
 });

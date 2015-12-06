@@ -54,7 +54,7 @@ app.get('/templates/:name', routes.templates);
 // gym routes
 app.use('/api/gyms', routes.gymRouter);
 // review routes
-app.use('/api/reviews', routes.reviewRouter);
+app.use('/api/gyms/reviews', routes.reviewRouter);
 
 // ALL OTHER ROUTES (ANGULAR HANDLES)
 // redirect all other paths to index

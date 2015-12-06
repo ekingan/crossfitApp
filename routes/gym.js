@@ -19,7 +19,7 @@ gymRouter.route('/')  // translates to '/api/gyms/'
     console.log("the post newGym",req.body);
     Gym.create(req.body, function (err, gym){
       console.log(gym);
-      res.status(201).send(gym);
+      res.status(201).send(gym);  
     });
   });
  // });
