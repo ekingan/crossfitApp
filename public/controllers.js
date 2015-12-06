@@ -57,9 +57,11 @@ angular.module('crossfitApp').controller('GymShowCtrl',function($scope, $statePa
   });
 
 angular.module('crossfitApp').controller('ReviewShowCtrl',function($scope, $stateParams,
-                                                                Review, Gym ) {
-//creates new review
-      // $scope.reviews = Review.query();
+                                                                   Review, Gym ) {
+     
+      //gets all reviews
+      $scope.reviews = Review.query();
+       //creates new review
       $scope.review = {};
       $scope.reviews = [];
       $scope.createReview = function() {
