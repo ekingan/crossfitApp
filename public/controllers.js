@@ -65,6 +65,7 @@ angular.module('crossfitApp').controller('GymShowCtrl',function($scope, $statePa
     $scope.createReview = function() {
       console.log($scope.newReview);
         Review.save($scope.newReview, function (data) {
+          console.log(data);
         $scope.gym.reviews.push(data);
         console.log(data);
         });

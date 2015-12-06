@@ -9,7 +9,7 @@ app.factory('Gym', function($resource) {
 });
 
 app.factory('Review', function($resource) {
-  return $resource('/api/reviews/:id', {
+  return $resource('/api/gyms/reviews', { review_id: '@id' }, {
   	update: {
    	 method: 'PUT' // this method issues a PUT request
   	}

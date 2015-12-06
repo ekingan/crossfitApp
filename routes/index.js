@@ -12,3 +12,4 @@ exports.templates = function (req, res) {
 };
 
 exports.gymRouter =  require('./gym.js');
+exports.reviewRouter = require('./review.js');

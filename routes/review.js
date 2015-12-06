@@ -1,7 +1,8 @@
 var express = require('express');
-var reviewRouter = express.Router();
+var gymRouter = express.Router();
 
-var Review = require('../models/review.js');
+var Gym = require('../models/Gym.js');
+var Review = require('../models/Review.js');
 
 reviewRouter.route('/')  // translates to '/api/gyms/
 //INDEX -GET ALL POSTS
@@ -25,4 +26,6 @@ reviewRouter.route('/')  // translates to '/api/gyms/
           res.json(gym);
         });
       });
-    });
+     });
+
+module.exports = reviewRouter;

@@ -49,7 +49,7 @@ ReviewSchema.pre('save', function(next){
   next();
 });
 
-// export post model
+// export review model
 var Review = mongoose.model('Review', ReviewSchema);
 
 module.exports = Review;
