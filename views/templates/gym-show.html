@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container" ng-controller="GymShowCtrl">
 	<div class="media-left">
       <!-- book info -->
-      <div class="media-body" ng-controller="GymShowCtrl">
+      <div class="media-body" >
         <h3 class="media-heading">
           {{gym.name}}
         </h3>
@@ -18,29 +18,28 @@
       </div>
    </div>
     <!-- new review form -->
-      <div class="row" ng-controller="ReviewShowCtrl">
+      <div class="row">
         <h3>Add a Review</h3>
       <form class='form-group' ng-submit="createReview()">
-           <textarea class="form-control" rows="3" ng-model="review.content" required></textarea>
+           <textarea class="form-control" rows="3" ng-model="newReview.content" required></textarea>
           <strong> Best thing about this box: </strong><br>
           <label>
-          <input type="checkbox" ng-model="review.programming">
+          <input type="checkbox" ng-model="newReview.programming">
           Programming
-          </label>
-          <label> 
-          <input type="checkbox" ng-model="review.community">
+          </labelnewReview          <label> 
+          <input type="checkbox" ng-model="newReview.community">
           Community
           </label>
           <label> 
-          <input type="checkbox" ng-model="review.vibe">
+          <input type="checkbox" ng-model="newReview.vibe">
           Vibe
           </label>
           <label> 
-          <input type="checkbox" ng-model="review.schedule">
+          <input type="checkbox" ng-model="newReview.schedule">
           Schedule
           </label>
           <label> 
-          <input type="checkbox" ng-model="review.price">
+          <input type="checkbox" ng-model="newReview.price">
           Price
           </label>
           <br>
@@ -50,12 +49,12 @@
       </div>
       <!-- review show -->
         <div>
-          <div class="panel panel-default" >
+          <div class="panel panel-default">
             <div class="panel-heading">
               <ul class='list-unstyled'>
-                <li class="list-unstyled" ng-repeat="review in reviews">
+                <li class="list-unstyled" ng-repeat="gym in gyms">
                   <h4 class="panel-title form-inline">
-                  {{gym.reviews}}
+                  {{gym.review}}
                   </h4>
                 </li>
               </ul>

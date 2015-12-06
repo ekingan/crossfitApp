@@ -50,49 +50,39 @@ angular.module('crossfitApp').controller('GymNewCtrl',function($scope, Gym, $sta
 angular.module('crossfitApp').controller('GymShowCtrl',function($scope, $stateParams,
                                                                 Review, Gym ) {
 //gets gyms by ID for Show page
-      Gym.get({ id: $stateParams.gym_id }, function(data) {
-      $scope.gym = data;
+  Gym.get({ id: $stateParams.gym_id }, function(data) {
+    $scope.gym = data;
 
-      });
   });
+ 
+  // Review.get({ id: $stateParams.gym_id }, function(data) {
+  //     $scope.review = data;
 
-angular.module('crossfitApp').controller('ReviewShowCtrl',function($scope, $stateParams,
-                                                                   Review, Gym ) {
-     
-      //gets all reviews
-      $scope.reviews = Review.query();
-       //creates new review
-       //review is an object
-      $scope.review = {};
-      //reviews is an array of review objects
-      $scope.reviews = [];
-      //when submited a review is created
-      $scope.createReview = function() {
-        //review is saved
-        Review.save($scope.review, function (data) {
+  // });
+  // add a new review
+    $scope.newReview = {};
+    $scope.allReviews = [];
+
+    $scope.createReview = function() {
+      if ($scope.newReview) {
+        Review.save($scope.newReview, function (data) {
+        $scope.allReviews.push(data);
         console.log(data);
-        //vrevie is shifted into the array of reviews
-        $scope.reviews.unshift(data);
         });
-        //form is cleared out.
-        $scope.review = {};
-      };
-
-        // var review = new Review($scope.review);
-        // console.log(review);
-        // review.$save(function (data) {
-        //   $scope.reviews.unshift(data);
-        
-        //   console.log($scope.reviews);
-        //   $scope.review = {};
-      //   });
-      // };
-
-
-
-
-
+        $scope.newReview = {};
+      
+      }
+    };
 });
+
+
+
+
+
+
+
+
+
 
 // angular.module('crossfitApp').controller('GymSearchCtrl',function($scope) {
 //       $scope.searchGym = function () {

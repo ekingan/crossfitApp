@@ -9,7 +9,7 @@ gymRouter.route('/')  // translates to '/api/gyms/'
   // send all gyms
   .get(function(request, response){
     //INDEX -GET ALL gyms
-      Gym.find().sort('name').exec(function(err, gyms) {
+      Gym.find().sort('name').populate('reviews').exec(function(err, gyms) {
       if (err) { return response.status(404).send(err); }
       response.send(gyms); 
     });    
