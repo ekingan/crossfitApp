@@ -49,18 +49,22 @@
       <br>
       </div>
       <!-- review show -->
-        <div>
+        <div ng-repeat="review in gym.reviews">
           <div class="panel panel-default">
             <div class="panel-heading">
               <ul class='list-unstyled'>
-                <li class="list-unstyled" ng-repeat="review in gym.reviews">
+                <li class="list-unstyled" >
                   <h4 class="panel-title form-inline">
                   {{review.content}}
                   </h4>
+                    <a href="#" class='pull-right' ng-click="deleteReview(review, $index)">
+                      <i class='icon ion-close-circled'></i>
+                    </a>
                 </li>
               </ul>
             </div>
           </div>
         </div>
+
     
 </div>

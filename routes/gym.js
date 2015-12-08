@@ -81,19 +81,16 @@ gymRouter.route(':gym_id/reviews/:review_id')
       // set the value of the gym and review ids
       var gymId = req.params.gym_id;
       var reviewId = req.params.review_id;
-       console.log("gymID and reviewId", gymId, reviewId);
+       console.log("gymId and reviewId", gymId, reviewId);
         // find idea by id
-        Gym.findById(req.params.gym_id, function (err, gym) {
-        if (err) { 
-          return res.status(404).send(err); 
-        }
-        gym.reviews.push(review);
-        console.log("gym after push: ", gym.reviews);
-        gym.save(function (err, gym) {
+        Gym.findById(gymId, function (err, gym) {
+          var review = gym.reviews.id(reviewId);
+          review.remove();
+          gym.save(function (err, review) {
           if (err) { 
             return res.send(err); 
           }
-          res.send(review);
+          res.json(review);
         });
       });
        

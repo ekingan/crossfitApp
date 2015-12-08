@@ -34,7 +34,7 @@ angular.module('crossfitApp').controller('GymIndexCtrl',function($scope, Gym, $s
         $scope.allGyms.push(data);
         });
         $scope.newGym = {};
-        
+
       }
     };
   });
@@ -59,9 +59,9 @@ angular.module('crossfitApp').controller('GymShowCtrl',function($scope, $statePa
       var review = new Review($scope.newReview);
       console.log("review : ", review);
       review.$save({ gym_id: $stateParams.gym_id }, function(data) {
-        console.log("review", data);
+  
         $scope.gym.reviews.unshift(data);
-        console.log("new", $scope.gymReviews);
+        
         $scope.newReview = {};
       });
     };
@@ -69,7 +69,7 @@ angular.module('crossfitApp').controller('GymShowCtrl',function($scope, $statePa
     // DELETE A REVIEW
     $scope.deleteReview = function(review, $index) {
       Review.remove({ id: $stateParams.id, reviewId: review._id }, function(data) {
-        $scope.gymReviews.splice($index, 1);
+        $scope.gym.reviews.splice($index, 1);
       });
     };
 });
