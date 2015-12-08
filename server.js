@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // connect to database
-var dbName = 'db';
+var dbName = 'crossfitApp-db';
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/' + dbName);    
 
 // serve public folder as static assets on the root route
@@ -53,9 +53,10 @@ app.get('/templates/:name', routes.templates);
 // API ROUTES
 // gym routes
 app.use('/api/gyms', routes.gymRouter);
-// review routes
-app.use('/api/gyms/reviews', routes.reviewRouter);
-
+// // review routes
+// app.use('/api/gyms/:gym_id/reviews', routes.reviewRouter);
+// require('./routes/gym')(app);
+// require('./routes/review')(app);
 // ALL OTHER ROUTES (ANGULAR HANDLES)
 // redirect all other paths to index
 app.get('*',  routes.index);

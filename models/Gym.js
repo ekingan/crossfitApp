@@ -4,7 +4,7 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    Review = require('./Review');
+    Review = require('./Review.js');
 
 var GymSchema = new Schema({
     created_at: { 
@@ -22,7 +22,7 @@ var GymSchema = new Schema({
       required: false
     },
     // reviews: ['Review']
-    reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }]
+    reviews: [Review.schema]
     
 });
 
@@ -37,7 +37,7 @@ GymSchema.pre('save', function(next){
   next();
 });
 
-// export post model
+// export gym model
 var Gym = mongoose.model('Gym', GymSchema);
 
 module.exports = Gym;

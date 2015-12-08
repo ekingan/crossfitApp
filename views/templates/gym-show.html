@@ -26,7 +26,8 @@
           <label>
           <input type="checkbox" ng-model="newReview.programming">
           Programming
-          </labelnewReview          <label> 
+          </label>
+          <label> 
           <input type="checkbox" ng-model="newReview.community">
           Community
           </label>
@@ -52,9 +53,9 @@
           <div class="panel panel-default">
             <div class="panel-heading">
               <ul class='list-unstyled'>
-                <li class="list-unstyled" ng-repeat="gym in gyms">
+                <li class="list-unstyled" ng-repeat="review in gym.reviews">
                   <h4 class="panel-title form-inline">
-                  {{gym.review.content}}
+                  {{review.content}}
                   </h4>
                 </li>
               </ul>

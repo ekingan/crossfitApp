@@ -5,16 +5,13 @@
 'use strict';
 
 angular.module('crossfitApp').controller('GymIndexCtrl',function($scope, Gym, $stateParams) {
-    
 
-    // get() returns a single book
-    
-
-    //query() returns all the gyms
+  
+    //query() returns ALL THE GYMS
     $scope.allGyms = Gym.query(function(data) {
     }); 
 
-
+    //EDIT GYM
     $scope.editGym = function(gym) {
       Gym.update({id: gym._id}, gym, function(data) {
         gym.editForm = false;
@@ -22,7 +19,7 @@ angular.module('crossfitApp').controller('GymIndexCtrl',function($scope, Gym, $s
       });
     };
 
-    // // delete a gym
+    // DELETE GYM
     $scope.deleteGym = function (gym, $index) {
       Gym.delete({id: gym._id}, gym, function (data) {
       $scope.gym = gym;
@@ -30,48 +27,50 @@ angular.module('crossfitApp').controller('GymIndexCtrl',function($scope, Gym, $s
       });
     };
 
-
-});
-angular.module('crossfitApp').controller('GymNewCtrl',function($scope, Gym, $stateParams) {
-
     // add a new gym
-    $scope.newGym = {};
-    $scope.allGyms = [];
-
     $scope.createGym = function() { 
       if ($scope.newGym) {
-        Gym.save($scope.newGym, function (data, reviews) {
+        Gym.save($scope.newGym, function (data) {
         $scope.allGyms.push(data);
         });
         $scope.newGym = {};
+        
       }
     };
   });
+
 angular.module('crossfitApp').controller('GymShowCtrl',function($scope, $stateParams,
                                                                 Review, Gym ) {
 //gets gyms by ID for Show page
-  Gym.get({ id: $stateParams.gym_id }, function(data) {
+  Gym.get({ id: $stateParams.gym_id}, function(data) {
     $scope.gym = data;
 
   });
- 
-  // Review.get({ id: $stateParams.gym_id }, function(data) {
-  //     $scope.review = data;
-
-  // });
-  // add a new review
-    $scope.newReview = {};
-
+ //get reviews through gyms
+  Gym.get({ id: $stateParams.gym_id }, function(data) {
+      console.log("get request", data);
+      var reviews = data.reviews;
+      var reviewsReverse = reviews.reverse();
+      $scope.gymReviews = reviewsReverse;
+    });
+  // CREATE A REVIEW
     $scope.createReview = function() {
-      console.log($scope.newReview);
-        Review.save($scope.newReview, function (data) {
-          console.log(data);
-        $scope.gym.reviews.push(data);
-        console.log(data);
-        });
+      console.log($stateParams);
+      var review = new Review($scope.newReview);
+      console.log("review : ", review);
+      review.$save({ gym_id: $stateParams.gym_id }, function(data) {
+        console.log("review", data);
+        $scope.gym.reviews.unshift(data);
+        console.log("new", $scope.gymReviews);
         $scope.newReview = {};
-      
-      
+      });
+    };
+
+    // DELETE A REVIEW
+    $scope.deleteReview = function(review, $index) {
+      Review.remove({ id: $stateParams.id, reviewId: review._id }, function(data) {
+        $scope.gymReviews.splice($index, 1);
+      });
     };
 });
 

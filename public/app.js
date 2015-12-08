@@ -5,7 +5,8 @@
 'use strict';
 
 angular.module('crossfitApp', ['ui.router',
-                               'ngResource'])
+                               'ngResource'
+                               ])
 
  .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
     $stateProvider
@@ -18,11 +19,6 @@ angular.module('crossfitApp', ['ui.router',
         url: "/gyms/:gym_id", 
         templateUrl: 'templates/gym-show.html',
         controller: 'GymShowCtrl'
-      })
-      .state('gym-new', {
-        url: "/gyms/gym-new", 
-        templateUrl: 'templates/gym-new.html',
-        controller: "GymNewCtrl"
 
       });
 
